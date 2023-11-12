@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title">Edit Book</h4>
+    <button type="button" class="close" aria-label="Close" (click)="cancel()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title"  [ngModelOptions]="{standalone: true}"
+        [(ngModel)]="book.title" [value]="book.title">
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" [ngModelOptions]="{standalone: true}"
+         [(ngModel)]="book.author" [value]="book.author">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" rows="3" [ngModelOptions]="{standalone: true}"
+         [(ngModel)]="book.description" [value]="book.description"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="publication_year">Publication Year</label>
+        <input type="number" class="form-control" id="publication_year" [ngModelOptions]="{standalone: true}"
+         [(ngModel)]="book.publication_year" [value]="book.publication_year">
+      </div>
+      <div class="form-group">
+        <label for="isbn">ISBN	</label>
+        <input type="text" class="form-control" id="isbn" [(ngModel)]="book.isbn" [ngModelOptions]="{standalone: true}"
+         [value]="book.isbn">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+  </div>
+  

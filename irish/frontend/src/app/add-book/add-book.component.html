@@ -1,0 +1,137 @@
+<section class="vh-180" style="background-color: #fff;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Add Books</p>
+                <form class="mx-1 mx-md-4" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" id="form3Example1c" [(ngModel)]="registerDetails.title" #title="ngModel"
+                        minlength="6" maxlength="20"
+                        [ngClass]="{'is-invalid':f.submitted && title.invalid,'isvalid':f.submitted && title.valid}"
+                        name="titles" class="form-control" required pattern="^[a-z0-9_-]{8,15}$" />
+                      <div class="invalid-feedback">
+                        <div *ngIf="title.errors?.['minlength']">
+                          Title must be at least 6 characters
+                        </div>
+                        <div *ngIf="title.errors?.['maxlength']">
+                          Title must be at most 20 characters
+                        </div>
+
+                        <div *ngIf="title.errors?.['required']">Title is required</div>
+                        <div *ngIf="title.errors?.['pattern']">Invalid Title Name</div>
+                      </div>
+                      <label class="form-label" for="form3Example1c">Enter Title</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" id="form3Example3c" [(ngModel)]="registerDetails.author" name="author"
+                        class="form-control" #author="ngModel"   minlength="6" maxlength="20"
+                        [ngClass]="{'is-invalid':f.submitted && author.invalid,'isvalid':f.submitted && author.valid}"
+                        required pattern="^[a-z0-9_-]{8,15}$" />
+                      <div class="invalid-feedback">
+                        <div *ngIf="author.errors?.['minlength']">
+                          Author must be at least 6 characters
+                        </div>
+                        <div *ngIf="author.errors?.['maxlength']">
+                          Author must be at most 20 characters
+                        </div>
+                        <div *ngIf="author.errors?.['required']">Author is required</div>
+                      </div>
+
+                      <label class="form-label" for="form3Example3c">Enter Author</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" id="form3Example4c" [(ngModel)]="registerDetails.description"
+                        name="description" class="form-control" required #description="ngModel" minlength="6"
+                        maxlength="40"
+                        [ngClass]="{'is-invalid':f.submitted && description.invalid,'isvalid':f.submitted && description.valid}"
+                        pattern="^[a-z0-9_-]{8,15}$" />
+
+                      <div class="invalid-feedback">
+                        <div *ngIf="description.errors?.['minlength']">
+                          description must be at least 6 characters
+                        </div>
+                        <div *ngIf="description.errors?.['maxlength']">
+                          description must not exceed 40 characters
+                        </div>
+                        <div *ngIf="description.errors?.['required']">Description is required</div>
+                        <div *ngIf="description.errors?.['pattern']">Invalid Description</div>
+                      </div>
+                      <label class="form-label" for="form3Example4c">Enter Description</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="number" id="form3Example4cd" [(ngModel)]="registerDetails.publication_year"
+                        name="publication_year" class="form-control" required #publication_year="ngModel"
+                        minlength="4" maxlength="4"
+                        [ngClass]="{ 'is-invalid': f.submitted && publication_year.errors }" />
+                      <div *ngIf="publication_year.errors?.['minlength']">
+                        Publication Year must be at least 4 characters
+                      </div>
+                      <div *ngIf="publication_year.errors?.['maxlength']">
+                        Publication Year must be at least 4 characters
+                      </div>
+                      <div *ngIf="f.submitted && publication_year.errors" class="invalid-feedback">
+                        <div *ngIf="publication_year.errors?.['required']">Publication Year is required</div>
+
+                      </div>
+                      <label class="form-label" for="form3Example4cd">Enter Publication Year</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                      <input type="text" id="form3Example4cd" [(ngModel)]="registerDetails.isbn" name="isbn"
+                        class="form-control" required #isbn="ngModel"
+                        [ngClass]="{ 'is-invalid': f.submitted && isbn.errors }" />
+                      <div *ngIf="f.submitted && isbn.errors" class="invalid-feedback">
+                        <div *ngIf="isbn.errors?.['required']">ISBN is required</div>
+                      </div>
+                      <label class="form-label" for="form3Example4cd">Enter ISBN</label>
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                  </div>
+
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="assets\pexels-martin-de-arriba-7171398.jpg" height="80px" width="420px" class="img-fluid"
+                  alt="Sample image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<ngx-spinner
+bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" 
+type="ball-scale-multiple">
+<p style="font-size: 20px;color: white;">
+    Loading....</p>
+</ngx-spinner>
